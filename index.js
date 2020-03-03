@@ -117,7 +117,7 @@ app.post('/admin/categorias/editar/:id', async(req,res)=>{
     await db.run(`update categorias set categoria = '${categoria}' where id = '${req.params.id}'`)
     res.redirect('/admin/categorias')
 })
-
+//just testing a commit
 const init = async() => {
     const db = await dbConnection
     await db.run('create table if not exists categorias (id INTEGER PRIMARY KEY, categoria TEXT);')
