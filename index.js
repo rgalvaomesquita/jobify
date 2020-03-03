@@ -4,7 +4,7 @@ const app = express()
 const sqlite = require('sqlite')
 const dbConnection = sqlite.open('banco.sqlite',{Promise})
 const bodyParser = require('body-parser')
-const port = process.env.PORT || 3000
+
 app.set('view engine','ejs')
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended: true}))
@@ -117,7 +117,7 @@ app.post('/admin/categorias/editar/:id', async(req,res)=>{
     await db.run(`update categorias set categoria = '${categoria}' where id = '${req.params.id}'`)
     res.redirect('/admin/categorias')
 })
-
+//just testing a commit
 const init = async() => {
     const db = await dbConnection
     await db.run('create table if not exists categorias (id INTEGER PRIMARY KEY, categoria TEXT);')
@@ -132,7 +132,7 @@ const init = async() => {
 }
 init()
 //quando a app estiver em uso, mudar para 80 http ou 443 https
-app.listen(port, (err) => {
+app.listen(3000, (err) => {
     if(err){
         console.log('Não foi possível iniciar a servidor do jobify')
     }else{
